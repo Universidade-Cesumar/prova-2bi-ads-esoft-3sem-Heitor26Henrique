@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Controle de Almoxarifado</h1>
+
+        <div class="formulario">
+
+            <input
+                type="text"
+                id="input-nome"
+                placeholder="Nome do Material"
+            >
+
+            <input
+                type="number"
+                id="input-quantidade"
+                placeholder="Quantidade"
+            >
+
+            <button id="btn-cadastrar">
+                Cadastrar
+            </button>
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+
+            <tbody id="lista-materiais">
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
