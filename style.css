@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin:0;
     padding:0;
@@ -54,3 +55,6 @@ td{
 th{
     background:#eee;
 }
+=======
+/* Caso queira utilizar framework como Bootstrap para estilização, pode utilizar. Basta ignoar esse arquivo */
+>>>>>>> cdd2088af486cdfbd26722585049ad98c77f81e4
