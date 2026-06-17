@@ -43,9 +43,13 @@ async function listarMateriais() {
         <td>
 
             <button
-                class="btn-baixar"
-            >
-                Baixar
+    class="btn-baixar"
+    onclick="baixarMaterial(
+        '${material.id}',
+        ${material.quantidade},
+        this
+    )"
+>    
             </button>
 
             <button
