@@ -128,3 +128,57 @@ async function excluirMaterial(id) {
         );
     }
 }
+async function baixarMaterial(
+    id,
+    estoqueAtual,
+    botao
+) {
+
+    const inputRetirada =
+        botao.parentElement
+        .parentElement
+        .querySelector("#input-retirada");
+
+    const quantidadeRetirada =
+        Number(inputRetirada.value);
+
+    const retiradaValida =
+        validarRetirada(
+            estoqueAtual,
+            quantidadeRetirada
+        );
+
+    if (!retiradaValida) {
+
+        alert("Quantidade inválida!");
+        return;
+    }
+
+    const novoEstoque =
+        estoqueAtual - quantidadeRetirada;
+
+    try {
+
+        await fetch(`${URL_API}/${id}`, {
+            method: "PUT",
+
+            headers: {
+                "Content-Type":
+                "application/json"
+            },
+
+            body: JSON.stringify({
+                quantidade: novoEstoque
+            })
+        });
+
+        listarMateriais();
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao atualizar estoque:",
+            erro
+        );
+    }
+}
