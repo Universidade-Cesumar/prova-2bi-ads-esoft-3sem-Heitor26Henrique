@@ -25,12 +25,39 @@ async function listarMateriais() {
         listaMateriais.innerHTML = "";
 
         materiais.forEach(material => {
-            listaMateriais.innerHTML += `
-                <tr>
-                    <td>${material.nome}</td>
-                    <td>${material.quantidade}</td>
-                </tr>
-            `;
+           listaMateriais.innerHTML += `
+    <tr>
+
+        <td>${material.nome}</td>
+
+        <td>${material.quantidade}</td>
+
+        <td>
+            <input
+                type="number"
+                id="input-retirada"
+                placeholder="Qtd"
+            >
+        </td>
+
+        <td>
+
+            <button
+                class="btn-baixar"
+            >
+                Baixar
+            </button>
+
+            <button
+                class="btn-excluir"
+            >
+                Excluir
+            </button>
+
+        </td>
+
+    </tr>
+`;
         });
 
     } catch (erro) {
@@ -74,3 +101,29 @@ async function cadastrarMaterial() {
 btnCadastrar.addEventListener("click", cadastrarMaterial);
 
 listarMateriais();
+
+async function excluirMaterial(id) {
+
+    const confirmar =
+        confirm("Deseja excluir este material?");
+
+    if (!confirmar) {
+        return;
+    }
+
+    try {
+
+        await fetch(`${URL_API}/${id}`, {
+            method: "DELETE"
+        });
+
+        listarMateriais();
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao excluir material:",
+            erro
+        );
+    }
+}
