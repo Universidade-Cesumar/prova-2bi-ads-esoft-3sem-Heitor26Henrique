@@ -49,9 +49,10 @@ async function listarMateriais() {
             </button>
 
             <button
-                class="btn-excluir"
-            >
-                Excluir
+    class="btn-excluir"
+    onclick="excluirMaterial('${material.id}')"
+>
+    Excluir
             </button>
 
         </td>
