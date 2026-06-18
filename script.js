@@ -17,84 +17,94 @@ function validarRetirada(estoqueAtual, quantidadeRetirada) {
 
     return true;
 }
+
 async function listarMateriais() {
+
     try {
+
         const resposta = await fetch(URL_API);
         const materiais = await resposta.json();
 
-        console.log(materiais);
-        alert("Dados carregados!");
-       
-listaMateriais.innerHTML = "";
+        listaMateriais.innerHTML = "";
 
-        materiais.forEach(material => {
+        materiais.forEach((material, index) => {
 
-           listaMateriais.innerHTML += `
-    <tr>
+            listaMateriais.innerHTML += `
+            <tr>
 
-        <td>${material.nome}</td>
+                <td>${material.nome}</td>
 
-        <td>${material.quantidade}</td>
+                <td>${material.quantidade}</td>
 
-        <td>
-            <input
-                type="number"
-                id="input-retirada"
-                placeholder="Qtd"
-            >
-        </td>
+                <td>
+                    <input
+                        type="number"
+                        id="input-retirada"
+                        placeholder="Qtd"
+                        min="1"
+                    >
+                </td>
 
-        <td>
+                <td>
 
-          <button
-    class="btn-baixar"
-    onclick="baixarMaterial(
-        '${material.id}',
-        ${material.quantidade},
-        this
-    )"
->
-    Baixar
-          </button>
+                    <button
+                        class="btn-baixar"
+                        onclick="baixarMaterial(
+                            ${index + 1},
+                            ${material.quantidade},
+                            this
+                        )"
+                    >
+                        Baixar
+                    </button>
 
-            <button
-    class="btn-excluir"
-    onclick="excluirMaterial('${material.id}')"
->
-    Excluir
-            </button>
+                    <button
+                        class="btn-excluir"
+                        onclick="excluirMaterial(${index + 1})"
+                    >
+                        Excluir
+                    </button>
 
-        </td>
+                </td>
 
-    </tr>
-`;
+            </tr>
+            `;
         });
 
     } catch (erro) {
-        console.error("Erro ao listar materiais:", erro);
+
+        console.error(
+            "Erro ao listar materiais:",
+            erro
+        );
     }
 }
 
 async function cadastrarMaterial() {
+
     const nome = inputNome.value.trim();
-    const quantidade = inputQuantidade.value;
+    const quantidade = Number(inputQuantidade.value);
 
     if (!nome || !quantidade) {
+
         alert("Preencha todos os campos!");
         return;
     }
 
     const novoMaterial = {
-        nome: nome,
-        quantidade: Number(quantidade)
+        nome,
+        quantidade
     };
 
     try {
+
         await fetch(URL_API, {
             method: "POST",
+
             headers: {
                 "Content-Type": "application/json"
             },
+
             body: JSON.stringify(novoMaterial)
         });
 
@@ -104,13 +114,13 @@ async function cadastrarMaterial() {
         listarMateriais();
 
     } catch (erro) {
-        console.error("Erro ao cadastrar material:", erro);
+
+        console.error(
+            "Erro ao cadastrar material:",
+            erro
+        );
     }
 }
-
-btnCadastrar.addEventListener("click", cadastrarMaterial);
-
-listarMateriais();
 
 async function excluirMaterial(id) {
 
@@ -137,19 +147,29 @@ async function excluirMaterial(id) {
         );
     }
 }
+
 async function baixarMaterial(
     id,
     estoqueAtual,
     botao
-) { alert("Botão Baixar clicado!");
+) {
+
+    const linha =
+        botao.closest("tr");
 
     const inputRetirada =
-        botao.parentElement
-        .parentElement
-        .querySelector("#input-retirada");
+        linha.querySelector("input");
 
     const quantidadeRetirada =
-        Number(inputRetirada.value);
+        parseInt(inputRetirada.value);
+
+    if (
+        isNaN(quantidadeRetirada)
+    ) {
+
+        alert("Informe uma quantidade!");
+        return;
+    }
 
     const retiradaValida =
         validarRetirada(
@@ -164,7 +184,8 @@ async function baixarMaterial(
     }
 
     const novoEstoque =
-        estoqueAtual - quantidadeRetirada;
+        estoqueAtual -
+        quantidadeRetirada;
 
     try {
 
@@ -191,3 +212,10 @@ async function baixarMaterial(
         );
     }
 }
+
+btnCadastrar.addEventListener(
+    "click",
+    cadastrarMaterial
+);
+
+listarMateriais();
