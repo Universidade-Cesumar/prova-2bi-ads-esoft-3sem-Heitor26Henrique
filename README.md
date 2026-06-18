@@ -1,19 +1,23 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/B74p-HKt)
-# Sistema de Controle de Almoxarifado
+# Controle de Almoxarifado
 
 ## Descrição
 
-Projeto desenvolvido para a Sprint 1 da disciplina de Engenharia de Software com o objetivo de criar a base de um sistema de controle de almoxarifado utilizando HTML, CSS, JavaScript e MockAPI.
+Sistema web desenvolvido para controle de estoque de materiais de almoxarifado utilizando HTML, CSS, JavaScript e MockAPI.
 
-O sistema permite cadastrar materiais e visualizar os itens armazenados em uma API na nuvem.
+O projeto permite cadastrar materiais, listar os itens cadastrados, realizar baixa de estoque e excluir materiais do sistema.
+
+---
 
 ## Funcionalidades
 
 * Cadastro de materiais
-* Registro da quantidade em estoque
-* Consumo de API utilizando método GET
-* Envio de dados utilizando método POST
-* Listagem automática dos materiais cadastrados
+* Listagem de materiais cadastrados
+* Baixa de estoque
+* Exclusão de materiais
+* Validação de quantidade retirada
+* Integração com MockAPI
+
+---
 
 ## Tecnologias Utilizadas
 
@@ -21,36 +25,75 @@ O sistema permite cadastrar materiais e visualizar os itens armazenados em uma A
 * CSS3
 * JavaScript
 * MockAPI
+* Git e GitHub
+
+---
 
 ## Estrutura do Projeto
 
 ```text
-/
+SprintUM/
+│
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
 ```
 
+---
+
+## Como Executar
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/Universidade-Cesumar/prova-2bi-ads-esoft-3sem-Heitor26Henrique.git
+```
+
+2. Abra o projeto no VS Code.
+
+3. Execute utilizando a extensão Live Server.
+
+---
+
 ## API Utilizada
 
-MockAPI:
+Endpoint:
 
+```text
 https://6a29c6ebf59cb8f65f1d9998.mockapi.io/almoxarifado/Iventario
+```
 
-### Campos utilizados
+Métodos utilizados:
 
-| Campo      | Tipo   |
-| ---------- | ------ |
-| nome       | String |
-| quantidade | Number |
+* GET
+* POST
+* PUT
+* DELETE
 
-## Objetivos da Sprint 1
+---
 
-* Criar a interface inicial do sistema
-* Implementar o cadastro de materiais
-* Integrar o sistema com a MockAPI
-* Exibir os dados cadastrados dinamicamente na tela
+## Regras de Negócio
+
+### Cadastro
+
+O sistema permite cadastrar novos materiais informando:
+
+* Nome
+* Quantidade
+
+### Baixa de Estoque
+
+A quantidade retirada:
+
+* Não pode ser menor ou igual a zero;
+* Não pode ser maior que a quantidade disponível em estoque.
+
+### Exclusão
+
+O usuário pode excluir materiais mediante confirmação.
+
+---
 
 ## Autor
 
@@ -58,4 +101,4 @@ Heitor Henrique
 
 Curso: Análise e Desenvolvimento de Sistemas
 
-Universidade UniCesumar
+Universidade Cesumar
