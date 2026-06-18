@@ -22,9 +22,13 @@ async function listarMateriais() {
         const resposta = await fetch(URL_API);
         const materiais = await resposta.json();
 
-        listaMateriais.innerHTML = "";
+        console.log(materiais);
+        alert("Dados carregados!");
+       
+listaMateriais.innerHTML = "";
 
         materiais.forEach(material => {
+
            listaMateriais.innerHTML += `
     <tr>
 
@@ -137,7 +141,7 @@ async function baixarMaterial(
     id,
     estoqueAtual,
     botao
-) {
+) { alert("Botão Baixar clicado!");
 
     const inputRetirada =
         botao.parentElement
