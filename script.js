@@ -4,6 +4,7 @@ const inputNome = document.getElementById("input-nome");
 const inputQuantidade = document.getElementById("input-quantidade");
 const btnCadastrar = document.getElementById("btn-cadastrar");
 const listaMateriais = document.getElementById("lista-materiais");
+const totalItens = document.getElementById("total-itens");
 
 function validarRetirada(estoqueAtual, quantidadeRetirada) {
 
@@ -17,13 +18,18 @@ function validarRetirada(estoqueAtual, quantidadeRetirada) {
 
     return true;
 }
+function atualizarDashboard(materiais) {
 
+    totalItens.textContent =
+        materiais.length;
+}
 async function listarMateriais() {
 
     try {
 
         const resposta = await fetch(URL_API);
         const materiais = await resposta.json();
+        atualizarDashboard(materiais);
 
         listaMateriais.innerHTML = "";
 
