@@ -93,11 +93,15 @@ async function listarMateriais(filtro = "") {
 
     } catch (erro) {
 
-        console.error(
-            "Erro ao listar materiais:",
-            erro
-        );
-    }
+    alert(
+        "Erro ao carregar materiais."
+    );
+
+    console.error(
+        "Erro ao listar materiais:",
+        erro
+    );
+  }
 }
 
 async function cadastrarMaterial() {
@@ -142,14 +146,18 @@ inputBusca.addEventListener(
 
         listarMateriais();
 
-    } catch (erro) {
+    catch (erro) {
 
-        console.error(
-            "Erro ao cadastrar material:",
-            erro
-        );
-    }
-}
+    alert(
+        "Erro ao carregar materiais."
+    );
+
+    console.error(
+        "Erro ao listar materiais:",
+        erro
+    );
+  }
+ }
 
 async function excluirMaterial(id) {
 
@@ -170,12 +178,16 @@ async function excluirMaterial(id) {
 
     } catch (erro) {
 
-        console.error(
-            "Erro ao excluir material:",
-            erro
-        );
-    }
-}
+    alert(
+        "Erro ao excluir material."
+    );
+
+    console.error(
+        "Erro ao excluir material:",
+        erro
+    );
+   }
+ }
 
 async function baixarMaterial(
     id,
@@ -235,12 +247,16 @@ async function baixarMaterial(
 
     } catch (erro) {
 
-        console.error(
-            "Erro ao atualizar estoque:",
-            erro
-        );
-    }
-}
+    alert(
+        "Erro ao atualizar estoque."
+    );
+
+    console.error(
+        "Erro ao atualizar estoque:",
+        erro
+    );
+   }
+ }
 
 btnCadastrar.addEventListener(
     "click",
