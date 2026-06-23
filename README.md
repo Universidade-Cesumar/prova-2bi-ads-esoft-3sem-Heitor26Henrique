@@ -1,10 +1,18 @@
 # Controle de Almoxarifado
 
+## Link do Projeto
+
+GitHub Pages:https://universidade-cesumar.github.io/prova-2bi-ads-esoft-3sem-Heitor26Henrique/
+
+Repositório GitHub:https://github.com/Universidade-Cesumar/prova-2bi-ads-esoft-3sem-Heitor26Henrique
+
+---
+
 ## Descrição
 
 Sistema web desenvolvido para controle de estoque de materiais de almoxarifado utilizando HTML, CSS, JavaScript e MockAPI.
 
-O projeto permite cadastrar materiais, listar os itens cadastrados, realizar baixa de estoque e excluir materiais do sistema.
+O projeto permite cadastrar materiais, listar os itens cadastrados, realizar baixa de estoque, excluir materiais, pesquisar produtos e visualizar informações do estoque através de um dashboard.
 
 ---
 
@@ -14,7 +22,11 @@ O projeto permite cadastrar materiais, listar os itens cadastrados, realizar bai
 * Listagem de materiais cadastrados
 * Baixa de estoque
 * Exclusão de materiais
+* Pesquisa de materiais
+* Dashboard com total de itens cadastrados
+* Destaque visual para estoque crítico (quantidade menor que 10)
 * Validação de quantidade retirada
+* Tratamento de erros nas requisições da API
 * Integração com MockAPI
 
 ---
@@ -25,7 +37,9 @@ O projeto permite cadastrar materiais, listar os itens cadastrados, realizar bai
 * CSS3
 * JavaScript
 * MockAPI
-* Git e GitHub
+* Git
+* GitHub
+* GitHub Pages
 
 ---
 
@@ -39,20 +53,6 @@ SprintUM/
 ├── script.js
 └── README.md
 ```
-
----
-
-## Como Executar
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/Universidade-Cesumar/prova-2bi-ads-esoft-3sem-Heitor26Henrique.git
-```
-
-2. Abra o projeto no VS Code.
-
-3. Execute utilizando a extensão Live Server.
 
 ---
 
@@ -88,6 +88,10 @@ A quantidade retirada:
 
 * Não pode ser menor ou igual a zero;
 * Não pode ser maior que a quantidade disponível em estoque.
+
+### Estoque Crítico
+
+Materiais com quantidade inferior a 10 unidades recebem destaque visual para facilitar o controle do estoque.
 
 ### Exclusão
 
