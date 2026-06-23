@@ -70,17 +70,17 @@ async function listarMateriais(filtro = "") {
                     <button
                         class="btn-baixar"
                         onclick="baixarMaterial(
-                            ${index + 1},
-                            ${material.quantidade},
-                            this
-                        )"
+                         ${material.id},
+                         ${material.quantidade},
+                         this
+                    )"
                     >
                         Baixar
                     </button>
 
                     <button
                         class="btn-excluir"
-                        onclick="excluirMaterial(${index + 1})"
+                        onclick="excluirMaterial(${material.id})"
                     >
                         Excluir
                     </button>
