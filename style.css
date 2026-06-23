@@ -53,4 +53,10 @@ td{
 
 th{
     background:#eee;
+    
+}
+.estoque-critico{
+    background-color:#ffcccc;
+    color:#b30000;
+    font-weight:bold;
 }

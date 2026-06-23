@@ -39,13 +39,18 @@ async function listarMateriais(filtro = "") {
             )
     );
         atualizarDashboard(materiaisFiltrados);
-
+        
         listaMateriais.innerHTML = "";
 
         materiaisFiltrados.forEach((material, index) => {
 
+        const classeEstoque =
+        material.quantidade < 10
+            ? "estoque-critico"
+            : "";
+
             listaMateriais.innerHTML += `
-            <tr>
+            <tr class="${classeEstoque}">
 
                 <td>${material.nome}</td>
 
